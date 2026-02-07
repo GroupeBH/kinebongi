@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 
 const SESSION_COOKIE = "nzmu_admin_session";
@@ -6,7 +7,8 @@ const SESSION_COOKIE = "nzmu_admin_session";
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  const token = request.cookies.get(SESSION_COOKIE)?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get(SESSION_COOKIE)?.value;
 
   if (token) {
     const supabase = getSupabaseAdmin();
