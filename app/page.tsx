@@ -388,7 +388,7 @@ export default function Home() {
             <a className="transition hover:text-black" href="#processus">
               Processus
             </a>
-            <a className="transition hover:text-black" href="#candidature">
+            <a className="transition hover:text-black" href="/#candidature">
               Candidature
             </a>
             <a className="transition hover:text-black" href="#contact">
@@ -396,15 +396,20 @@ export default function Home() {
             </a>
           </nav>
           <div className="flex items-center gap-3">
-            <button className="hidden rounded-full border border-[var(--line)] bg-white/70 px-4 py-2 text-sm font-medium text-[#2b3335] transition hover:border-transparent hover:bg-white lg:inline-flex">
-              Espace investisseur
-            </button>
-            <a
+            <button
               className="rounded-full bg-[var(--accent-strong)] px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110"
-              href="#candidature"
+              type="button"
+              onClick={() => {
+                const target = document.getElementById("candidature");
+                if (target) {
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  return;
+                }
+                window.location.href = "/#candidature";
+              }}
             >
               Postuler
-            </a>
+            </button>
           </div>
         </header>
 
@@ -427,13 +432,10 @@ export default function Home() {
             <div className="flex flex-wrap gap-3">
               <a
                 className="rounded-full bg-[var(--accent-strong)] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition hover:brightness-110"
-                href="#candidature"
+                href="/#candidature"
               >
                 Demarrer ma candidature
               </a>
-              <button className="rounded-full border border-[var(--line)] bg-white/70 px-6 py-3 text-sm font-semibold text-[#2b3335] transition hover:bg-white">
-                Voir la plateforme
-              </button>
             </div>
 
             <div className="grid gap-4 pt-4 sm:grid-cols-3">

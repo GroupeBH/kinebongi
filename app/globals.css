@@ -23,6 +23,10 @@ body {
   letter-spacing: -0.01em;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   .font-display {
     font-family: var(--font-display);
